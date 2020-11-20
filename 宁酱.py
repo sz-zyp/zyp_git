@@ -105,7 +105,9 @@ def Day8():
     for dict_item in A_dic:  # 集合转列表
         A_dic[dict_item] = list(A_dic[dict_item])
     print(A_dic)
-
+# 下周计划
+# 学习csv文件的读写（用csv模块）
+# 学习json文件的读写(用json模块)
 
 
 
