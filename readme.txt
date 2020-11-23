@@ -7,6 +7,7 @@ Day11:
 
 Day10:
     周2作业
+    参考：https://www.cnblogs.com/yanglang/p/7126660.html
     通过csv模块读取Day10.csv文件的每一行，并输出到控制台
 
 Day9:
