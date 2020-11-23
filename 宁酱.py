@@ -133,16 +133,45 @@ def Day8():
 def Day9():
     # 自定义一个函数，它的功能是两数相加，并在主函数中调用此函数。
     # 主函数中已经有了两个变量a=1  b=2  通过调用自定义函数，返回一个值赋予给变量c。
+    # 参考答案 略
     pass
 
+
+def Day10():
+    # 周2作业
+    # 通过csv模块读取Day10.csv文件的每一行，并输出到控制台
+    import csv
+    with open("Day10.csv") as f1:
+        reader1 = csv.DictReader(f1)  # 读取csv文件 csv.DictReader(句柄)
+        for row in reader1:
+            print(row)  # 查看每行结果，你会发现每一行都是一个字典结构， 且不会输出第一行，第一行作为了列名
+
+
+def Day11():
+    # 周3作业
+    # 通过csv模块读取Day10.csv文件,并生成两个字典
+    # key2value1 = {'A': 'a', 'B': 'b', 'C': 'c', 'D': 'd'}
+    # key2value2 = {'A': '1', 'B': '1', 'C': '2', 'D': '2'}
+    import csv
+    key2value1 = {}
+    key2value2 = {}
+    with open("Day10.csv") as f1:
+        reader1 = csv.DictReader(f1)
+        for row in reader1:
+            key2value1[row["key"]] = row["value1"]
+            key2value2[row["key"]] = row["value2"]
+    print(key2value1)
+    print(key2value2)
 
 
 if __name__ == '__main__':
     # Day()
     # Day2()
-    str_1_10 = Day3()  # 调用方法
-    list_1_10 = Day4(str_1_10)
+    # str_1_10 = Day3()  # 调用方法
+    # list_1_10 = Day4(str_1_10)
     # Day5(list_1_10)
-    Day6()
-    Day7()
-    Day8()
+    # Day6()
+    # Day7()
+    # Day8()
+    # Day10()
+    Day11()
