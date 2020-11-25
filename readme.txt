@@ -1,4 +1,5 @@
 宁酱的每日python题目
+
 Day12:
     将两个字典按照Day10.csv的样式，写入到Day12.csv中
     key2value1 = {'A': 'a', 'B': 'b', 'C': 'c', 'D': 'd'}
