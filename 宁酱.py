@@ -164,6 +164,31 @@ def Day11():
     print(key2value2)
 
 
+def Day12():
+    # Day12:
+    # 将两个字典按照Day10.csv的样式，写入到Day12.csv中
+    import csv
+    key2value1 = {'A': 'a', 'B': 'b', 'C': 'c', 'D': 'd'}
+    key2value2 = {'A': '1', 'B': '1', 'C': '2', 'D': '2'}
+    with open('Day12.csv', mode='w', encoding='utf-8', newline='') as f1:
+        writer = csv.writer(f1)
+        head = ['key', 'value1', 'value2']
+        writer.writerow(head)
+        save = []
+        for x in key2value1:
+            save.append(x)
+            if key2value1.__contains__(x):
+                save.append(key2value1[x])
+            else:
+                save.append("")
+            if key2value2.__contains__(x):
+                save.append(key2value2[x])
+            else:
+                save.append("")
+            writer.writerow(save)
+            save = []
+
+
 if __name__ == '__main__':
     # Day()
     # Day2()
@@ -174,4 +199,5 @@ if __name__ == '__main__':
     # Day7()
     # Day8()
     # Day10()
-    Day11()
+    # Day11()
+    Day12()
