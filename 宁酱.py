@@ -189,15 +189,28 @@ def Day12():
             save = []
 
 
+def Day13():
+    pass
+
+
+def Day14():
+    # 通过requests这个包获取https://scihub.wikicn.top/10.1007/s00432-019-03087-8这个网站上的html内容，并把html内容输出到控制台
+    # 参考https://blog.csdn.net/xc_zhou/article/details/81021496    前面一部分就足矣了
+    import requests
+    response = requests.get("https://scihub.wikicn.top/10.1007/s00432-019-03087-8")
+    print(response.text)
+
+
 if __name__ == '__main__':
-    # Day()
+    # Day1()
     # Day2()
     # str_1_10 = Day3()  # 调用方法
     # list_1_10 = Day4(str_1_10)
     # Day5(list_1_10)
     # Day6()
-    # Day7()
+    #Day7()
     # Day8()
     # Day10()
     # Day11()
-    Day12()
+    # Day12()
+    Day14()

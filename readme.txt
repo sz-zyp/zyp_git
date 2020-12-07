@@ -1,5 +1,9 @@
 宁酱的每日python题目
 
+Day14():
+    通过requests这个包获取https://scihub.wikicn.top/10.1007/s00432-019-03087-8这个网站上的html内容，并把html内容输出到控制台
+    参考https://blog.csdn.net/xc_zhou/article/details/81021496    前面一部分就足矣了
+
 Day13:
     开始学习爬虫
     学习html基础
