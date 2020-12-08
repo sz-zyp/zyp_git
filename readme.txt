@@ -1,4 +1,8 @@
 宁酱的每日python题目
+Day16（周四）
+    目的：继续学习BeautifulSoup这个包
+    参考：自己探索吧
+    题目：从Day15提取的div中的下载链接https:\/\/sci.bban.top\/pdf\/10.1007\/s00432-019-03087-8.pdf?download=true
 
 Day15（周三）:
     目标：学习BeautifulSoup这个包
