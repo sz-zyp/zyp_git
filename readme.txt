@@ -1,6 +1,17 @@
 宁酱的每日python题目
 
-Day14():
+Day15（周三）:
+    目标：学习BeautifulSoup这个包
+    参考：https://cuiqingcai.com/1319.html   看参考文章的第4部分（创建对象）和第7部分（搜索文档树）即可
+    题目：从Day14获取的html中提取这个div的内容（提示，属性id具有唯一性）
+    <div id="buttons">
+    <ul>
+        <li id="reload"><a href="//scholar.google.com/" target="_blank">⇣ Google Scholar</a></li>
+        <li><a href="#" onclick="location.href='https:\/\/sci.bban.top\/pdf\/10.1007\/s00432-019-03087-8.pdf?download=true'">⇣ save</a></li>
+    </ul>
+    </div>
+
+Day14:
     通过requests这个包获取https://scihub.wikicn.top/10.1007/s00432-019-03087-8  这个网站上的html内容，并把html内容输出到控制台
     参考https://blog.csdn.net/xc_zhou/article/details/81021496    前面一部分就足矣了
 
