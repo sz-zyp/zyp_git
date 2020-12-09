@@ -170,7 +170,7 @@ def Day12():
     import csv
     key2value1 = {'A': 'a', 'B': 'b', 'C': 'c', 'D': 'd'}
     key2value2 = {'A': '1', 'B': '1', 'C': '2', 'D': '2'}
-    with open('Day12.csv', mode='w', encoding='utf-8', newline='') as f1:
+    with open('作业所需文件/Day12.csv', mode='w', encoding='utf-8', newline='') as f1:
         writer = csv.writer(f1)
         head = ['key', 'value1', 'value2']
         writer.writerow(head)
@@ -201,6 +201,44 @@ def Day14():
     print(response.text)
 
 
+def Day15():
+    # 目标：学习BeautifulSoup这个包
+    # 参考：https://cuiqingcai.com/1319.html   看参考文章的第4部分（创建对象）和第7部分（搜索文档树）即可
+    # 题目：从Day14获取的html中提取这个div的内容（提示，属性id具有唯一性）：
+    # <div id="buttons">
+    # <ul>
+    # <li id="reload"><a href="//scholar.google.com/" target="_blank">⇣ Google Scholar</a></li>
+    # <li><a href="#" onclick="location.href='https:\/\/sci.bban.top\/pdf\/10.1007\/s00432-019-03087-8.pdf?download=true'">⇣ save</a></li>
+    # </ul>
+    # </div>
+    import requests
+    from bs4 import BeautifulSoup
+    response = requests.get("https://scihub.wikicn.top/10.1007/s00432-019-03087-8")
+    soup = BeautifulSoup(response.text)
+    for x in soup.find_all(id='buttons'):
+        print(x)
+
+
+def Day16():
+    # 目的：继续学习BeautifulSoup这个包
+    # 参考：自己探索吧
+    # 题目：从Day15提取的div中的下载链接https:\/\/sci.bban.top\/pdf\/10.1007\/s00432-019-03087-8.pdf?download=true
+    import requests
+    from bs4 import BeautifulSoup
+    import re
+    response = requests.get("https://scihub.wikicn.top/10.1007/s00432-019-03087-8")
+    soup = BeautifulSoup(response.text)
+    # for x in soup.find_all(id='buttons'):
+    #     print(x)
+    soup.find(id='buttons')
+    for y in soup.find(id='buttons').find_all("a"):
+        try:
+            down_url = re.split("'", y["onclick"])[1]
+            print(down_url)
+        except:
+            pass
+
+
 if __name__ == '__main__':
     # Day1()
     # Day2()
@@ -208,9 +246,10 @@ if __name__ == '__main__':
     # list_1_10 = Day4(str_1_10)
     # Day5(list_1_10)
     # Day6()
-    #Day7()
+    # Day7()
     # Day8()
     # Day10()
     # Day11()
     # Day12()
-    Day14()
+    # Day14()
+    Day15()
