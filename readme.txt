@@ -54,6 +54,11 @@ Day17(周五)
 Day16（周四）
     目的：继续学习BeautifulSoup这个包
     参考：自己探索吧
+    狗屎老师口述，所讲内容在https://cuiqingcai.com/1319.html里都有体现
+    1.周三的作业用到了这个soup.find_all(id='link2')通过id找，我们不仅可以通过id找，还可以通过标签和别的属性找
+    例如soup.find_all('p')这个语句就是寻找soup对象里的所有p标签
+    2.获取某个标签的属性用[]中括号，例如x["属性名称"]
+    3.可能还有一个障碍，自己想办法
     题目：从Day15提取的div中的下载链接https:\/\/sci.bban.top\/pdf\/10.1007\/s00432-019-03087-8.pdf?download=true
 
 Day15（周三）:
