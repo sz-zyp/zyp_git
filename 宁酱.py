@@ -239,6 +239,93 @@ def Day16():
             pass
 
 
+def Day17():
+    # 周五
+    # 目的：json文件的读和写
+    # 参考：https://www.cnblogs.com/bigberg/p/6430095.html
+    # 题目：
+    # （1）有一字符串如下所示，转化为字典类型，并写入到D17.json文件中
+    # Day17_str = '{"A": "a", "B": "b", "C": ["1", "2", "3"]}'
+    # (2)读取D17.json文件，并把字典类型的值赋予给变量Day17_dic
+    Day17_str = '{"A": "a", "B": "b", "C": ["1", "2", "3"]}'
+    import json
+    I_am_dic = json.loads(Day17_str)
+    with open("D17.json", mode='w') as f1:
+        json.dump(I_am_dic, f1)
+    with open("D17.json") as f2:
+        Day17_dic = json.load(f2)
+    print(Day17_dic)
+
+
+def Day18():
+    import json
+    import re
+    import requests
+    query = '"breast cancer" AND ("Tandem mass tag" OR "TMT")'
+    query = re.sub(' ', '+', query)
+    base = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/'
+    db = "pubmed"
+    url = base + "esearch.fcgi?db=" + db + "&term=" + query + "&retmode=json" + "&retmax=100000"
+    response = requests.get(url)
+    resultPMID = response.text
+    data = json.loads(resultPMID)
+    idlist = data["esearchresult"]["idlist"]
+    print(idlist)
+
+
+def Day19():
+    import json
+    import re
+    import requests
+    import time
+    try:
+        import xml.etree.cElementTree as ET
+    except ImportError:
+        import xml.etree.ElementTree as ET
+    query = '"breast cancer" AND ("Tandem mass tag" OR "TMT")'
+    # 将检索式中的空格换为+
+    query = re.sub(' ', '+', query)
+    base = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/'
+    db = "pubmed"
+    url = base + "esearch.fcgi?db=" + db + "&term=" + query + "&retmode=json" + "&retmax=100000"
+    response = requests.get(url)
+    resultPMID = response.text
+    data = json.loads(resultPMID)
+    idlist = data["esearchresult"]["idlist"]
+    number = len(idlist)
+    print('找到文献数量：', number)
+    # 将找到的PMID用逗号连接成字符串，插入到API的网址中
+    seq = ','
+    string = seq.join(idlist)
+    #print(string)
+
+    time.sleep(2)  # 暂停2秒再去访问API，防止频繁访问
+
+    PMID2doi = {}
+    retmode = "xml"
+    rettype = ""
+    url2 = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=" + retmode + "&id=" + string + "&rettype=" + rettype
+    re = requests.get(url2)
+    # 读取xml树结构，其实就跟soup = BeautifulSoup(response.text)的意思一样
+    tree = ET.fromstring(re.text.encode("utf-8"))
+    for x in tree.findall("PubmedArticle"):
+        for y in x.findall("PubmedData"):
+            for z in y.findall("ArticleIdList"):
+                for w in z.findall("ArticleId"):
+                    if w.attrib["IdType"] == "pubmed":
+                        PMID = w.text
+                    if w.attrib["IdType"] == "doi":
+                        PMID2doi[PMID] = w.text
+                        #print(PMID)
+                PMID = ""
+    print("有doi的文献数量：", len(PMID2doi.keys()))
+    print(PMID2doi)
+    # 实际使用中最好将PMID2doi这个字典存储到json文件中，方便之后的调用
+
+
+
+
+
 if __name__ == '__main__':
     # Day1()
     # Day2()
@@ -252,4 +339,8 @@ if __name__ == '__main__':
     # Day11()
     # Day12()
     # Day14()
-    Day15()
+    # Day15()
+    # Day16()
+    # Day17()
+    # Day18()
+    Day19()
