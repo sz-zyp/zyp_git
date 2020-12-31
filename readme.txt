@@ -1,7 +1,11 @@
 宁酱的每日python题目
+Day21:
+    期末大作业
+    有一检索式"breast cancer" AND ("Tandem mass tag" OR "TMT")
+    要通过此检索式生成一个csv表格，包含以下内容：
+    PMID, 文献标题，摘要，期刊，发表年份，doi，PMC编号，sci下载链接，是否下载成功，下载后的本机存储地址链接
+
 不好意思，一下子出完了，明年再见，加油 gogogo
-
-
 Day19（周日，今年最后一个，耶）
     目的：（1）学习pubmed_API的另外一个：PMID到题录信息
          （2）学习xml  需要用到这个包xml.etree.ElementTree
